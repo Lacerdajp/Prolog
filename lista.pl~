@@ -88,12 +88,12 @@ fibonacci(X,R):-
 fibMenor(X,VALORNAFIB,Y):-
     fibonnaci(VALORNAFIB,R), X>=R,Y is VALORNAFIB-1.
 fibMenor(X,VALORNAFIB,Y):-
-    fibonnaci(VALORNAFIB,R), X<R,fibMenor(X,VALORNAFIB-1,Z),Y=Z.
+    fibonnaci(VALORNAFIB,R), X<R,fibMenor(X,VALORNAFIB-1,Y).
 adicionarFibLista(0,[1|[]]).
 adicionarFibLista(Y,[H|T]):-
     fibonacci(Y,R),H=R,adicionarFibLista(Y-1,T).
 valoresFib(X,L):-
-    fibMenor(X,X,Y),adicionarFibLista(Y,R),L=R.
+    fibMenor(X,X,Y),adicionarFibLista(Y,L).
 
 
 
