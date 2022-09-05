@@ -1,3 +1,17 @@
+%Questão 1
+
+%Questão 2
+
+%Questão 3
+
+%Questão 4
+
+%Questão 5
+
+%Questão 6
+
+%Questão 7
+
 %Questão8
 tamanho([],0).
 tamanho([_|T],R):-tamanho(T,X), R is X+1.
@@ -73,6 +87,41 @@ remova(_,[],[]).
 removerRep([H|T],[X|Y]):-
     remova(H,T,F),X=H,removerRep(F,Y).
 removerRep([],[]).
+%Quesstão 21
+%rever
+inserir(E, L, [E|L]):- !.
+
+duplicar([], []):- !.
+duplicar([H|T1],[H,H|T2]) :- duplicar(T1,T2).
+
+duplicarapartir(0, L, R) :- duplicar(L ,R), !.
+duplicarapartir(K, [H|T], R) :- X is K-1, duplicarapartir(X, T, A), inserir(H, A, R),!.
+%Questão 22
+%rever
+ultimo([H|[]], H) :- !.
+ultimo([_|T], R) :- ultimo(T,R),!.
+
+remover(X,[X|T],T):-!.
+remover(X,[Y|T1],[Y|T2]) :- remover(X,T1,T2),!.
+
+inserir(E, L, [E|L]):- !.
+
+shiftR(L,R) :- ultimo(L, A), remover(A, L, Y), inserir(A, Y, R), !.
+
+shiftRMul(L, 1, R) :- shiftR(L, R), !.
+shiftRMul(L, K, R) :- O is K-1, shiftRMul(L, O, A), shiftR(A, R),!.
+
+%Questão 23
+%Rever
+
+%Questão 24
+%Rever
+
+%Questão 25
+%Rever
+
+%Questão 26
+%Rever
 
 %Quatão 27
 fatorial(1,R):-
@@ -81,14 +130,15 @@ fatorial(1,R):-
 fatorial(X,R):-
     Y is X-1,fatorial(Y,Z),R is Z*X,!.
 %Questão 28
+%rever
 fibonacci(0,R):- R is 1.
 fibonacci(1,R):- R is 1.
 fibonacci(X,R):-
-    Y is X-1, Z is X-2, fatorial(Y,T),fatorial(Z,H), R is T+H.
+    Y is X-1, Z is X-2, fatorial(Y,T),fatorial(Z,H), R is T+H,!.
 fibMenor(X,VALORNAFIB,Y):-
-    fibonnaci(VALORNAFIB,R), X>=R,Y is VALORNAFIB-1.
+    fibonacci(VALORNAFIB,R), X>=R,Y is VALORNAFIB-1.
 fibMenor(X,VALORNAFIB,Y):-
-    fibonnaci(VALORNAFIB,R), X<R,fibMenor(X,VALORNAFIB-1,Z),Y=Z.
+    fibonacci(VALORNAFIB,R), X<R,fibMenor(X,VALORNAFIB-1,Z),Y=Z.
 adicionarFibLista(0,[1|[]]).
 adicionarFibLista(Y,[H|T]):-
     fibonacci(Y,R),H=R,adicionarFibLista(Y-1,T).
