@@ -1,6 +1,16 @@
-%Questão8
-tamanho([],0).
-tamanho([_|T],R):-tamanho(T,X), R is X+1.
+%Questão 1
+
+%Questão 2
+
+%Questão 3
+
+%Questão 4
+
+%Questão 5
+
+%Questão 6
+
+%Questão 7
 %Questão 9
 ultimo([_|T],X):-
     ultimo(T,X),!.
@@ -75,10 +85,12 @@ removerRep([H|T],[X|Y]):-
 removerRep([],[]).
 %Quesstão 21
 %rever
-inserir(E, L, [E|L]):- !.
+inserir(E, L, [H|T]):-
+    E=H,L=T,!.
 
 duplicar([], []):- !.
-duplicar([H|T1],[H,H|T2]) :- duplicar(T1,T2).
+duplicar([H|T1],[X,Y|T2]) :-
+    X=H,Y=H,duplicar(T1,T2).
 
 duplicarapartir(0, L, R) :- duplicar(L ,R), !.
 duplicarapartir(K, [H|T], R) :- X is K-1, duplicarapartir(X, T, A), inserir(H, A, R),!.
@@ -92,10 +104,10 @@ remover(X,[Y|T1],[Y|T2]) :- remover(X,T1,T2),!.
 
 inserir(E, L, [E|L]):- !.
 
-shiftR(L,R) :- ultimo(L, A), remover(A, L, Y), inserir(A, Y, R), !.
+rotacionar(L,R) :- ultimo(L, A), remover(A, L, Y), inserir(A, Y, R), !.
 
-shiftRMul(L, 1, R) :- shiftR(L, R), !.
-shiftRMul(L, K, R) :- O is K-1, shiftRMul(L, O, A), shiftR(A, R),!.
+rotacionarTotal(L, 1, R) :- rotacionar(L, R), !.
+rotacionarTotal(L, K, R) :- O is K-1, rotacionarTotal(L, O, A), rotacionar(A, R),!.
 
 %Questão 23
 %Rever
